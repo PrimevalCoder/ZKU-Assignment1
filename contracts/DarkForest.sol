@@ -14,6 +14,7 @@ contract DarkForest {
 
     address public verifierAddr;
 
+    // construct the contract with a ZK proof verifier
     constructor(address _verifier) {
        verifierAddr = _verifier;
     }
@@ -22,11 +23,12 @@ contract DarkForest {
         bool occupied;
         uint lastSpawn;
     }
-    mapping(address => uint) private playerPosition;
-    mapping(uint => positionStatus) positionState;
+    mapping(address => uint) private playerPosition;    // player position is a hash value
+    mapping(uint => positionStatus) positionState;      // we trace the status of positions in the game world
 
-    event Spawn(address player, uint position);
+    event Spawn(address player, uint position);         // send Spawn events when players successfully spawn
 
+    // A valid position for spawning should be 1) unoccupied, and 2) no player spawned there in the last 5 mins
     function checkHistory(uint _position) private view returns (bool) {
         bool st_elapsed = (block.timestamp - positionState[_position].lastSpawn) > 5 minutes;
         bool free_spot = !(positionState[_position].occupied);
