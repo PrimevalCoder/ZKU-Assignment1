@@ -10,6 +10,6 @@ This app uses [Web3.py](https://web3py.readthedocs.io/en/stable/), [Ganache](htt
 
 ## Usage
 The app entrypoint is **interact.py**. First, you should choose *Set up ZK* in order to compile the circuit, create a trusted setup, and export the verifier contract.
-Afterwards, deploy the verifier contract on Ganache using Remix and Metamask. Then, you can "play": choose an account, a location, and spawn. If the transaction is successful,
+Afterwards, deploy the verifier and DarkForest contracts (in this order) on Ganache using Remix and Metamask. Then, you can "play": choose an account, a location, and spawn. If the transaction is successful,
 an event log is displayed. Make sure you choose a valid location. (Constraints: 32<sup>2</sup> < x<sup>2</sup> + y<sup>2</sup> <= 64<sup>2</sup>, gcd(x, y) > 1, and gcd(x, y) is not prime.)
 
